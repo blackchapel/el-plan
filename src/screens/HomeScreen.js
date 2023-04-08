@@ -14,8 +14,20 @@ const HomeScreen = ({ navigation }) => {
     const renderBanner = ({ item, index }) => {
         return <BannerComponent image={item} />;
     };
+
     const [searchProds, setSearchProds] = React.useState([]);
-    const [search, setSearch] = React.useState('')
+    const [search, setSearch] = React.useState('');
+    const [user, setUser] = React.useState({});
+
+    React.useEffect(() => {
+        const getUser = async () => {
+            let usr = await AsyncStorage.getItem('user');
+            usr = JSON.parse(usr);
+            setUser(usr);
+        }
+
+        getUser();
+    })
 
     const getProducts = async (s) => {
         if(s.length < 1) {setSearchProds([]);return;}
@@ -36,7 +48,7 @@ const HomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.body}>
             <View style={styles.headerView}>
-                <Text style={styles.helloText}>Hello kc!</Text>
+                <Text style={styles.helloText}>Hello {user.name}!</Text>
 
                 <TouchableOpacity onPress={() => navigation.openDrawer()}>
                     <Image source={avatar} style={styles.image} />
