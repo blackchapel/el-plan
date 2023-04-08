@@ -25,7 +25,7 @@ const ManageProducts = () => {
   const IMAGE =
     "https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80";
   const [products, setProducts] = useState([]);
-  const getProducts = async () => {
+  const getProduct = async () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
@@ -37,16 +37,15 @@ const ManageProducts = () => {
         }
       );
       setProducts(response.data.data.products);
-      console.log(response)
-      console.log(products)
     } catch (error) {
       alert(error.response.data.message);
     }
   };
 
   useEffect(() => {
-    getProducts();
+    getProduct();
   }, []);
+
   return (
     <>
       <AdminNavbar />
@@ -59,8 +58,9 @@ const ManageProducts = () => {
         <TabPanels>
           <TabPanel className="manage-tabs">
             <p>one!</p>
-            {products && products.map((prod) => {
-              <Center py={12}>
+            {products && products.map((prod, index) => {
+              return(
+              <Center py={12} key={index}>
                 <Box
                   role={"group"}
                   p={6}
@@ -127,7 +127,7 @@ const ManageProducts = () => {
                     </Stack>
                   </Stack>
                 </Box>
-              </Center>;
+              </Center>);
             })}
             
           </TabPanel>

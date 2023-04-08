@@ -33,9 +33,10 @@ import {
 import AdminNavbar from "../../components/admin/admin_navbar/adminNavbar";
 import React from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
+
 
 const Card = ({ heading, description, icon, func }) => {
-  const handler = () => {};
   return (
     <Box
       className="admin-card"
@@ -81,6 +82,7 @@ export default function GridListWith() {
   const [selectedCombo, setSelectedCombo] = React.useState([]);
   const [comboName, setComboName] = React.useState("");
   const [comboPrice, setComboPrice] = React.useState(0);
+  const navigate = useNavigate();
 
   const getProducts = async () => {
     const token = localStorage.getItem("token");
@@ -143,13 +145,8 @@ export default function GridListWith() {
   };
 
   const manageProductHandler = () => {
-<<<<<<< HEAD
-    console.log("Manage products");
-  };
-=======
     navigate("/admin/manageProducts")
   }
->>>>>>> 7bd434302b35b461a108ec058171cc191657b88a
 
   return (
     <div className="admin-landing-main">
