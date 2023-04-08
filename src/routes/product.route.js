@@ -5,7 +5,8 @@ const {
     createProduct,
     deleteProduct,
     viewProducts,
-    viewProductById
+    viewProductById,
+    searchProducts
 } = require('../controllers/product.controller');
 
 const router = express.Router();
@@ -17,5 +18,7 @@ router.delete('/:id', [auth.verifyJwt], deleteProduct);
 router.get('/', [auth.verifyJwt], viewProducts);
 
 router.get('/:id', [auth.verifyJwt], viewProductById);
+
+router.get('/search', [auth.verifyJwt], searchProducts);
 
 module.exports = router;

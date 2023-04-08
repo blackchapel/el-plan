@@ -77,9 +77,48 @@ const viewProductById = async (req, res) => {
     }
 };
 
+const searchProducts = async (req, res) => {
+    try {
+        const search = req.query.search;
+        const queryObj = {};
+
+        if (
+            search &&
+            (search !== 'undefined' || search !== '' || search !== ' ')
+        ) {
+            queryObj['$or'] = [
+                { category: { $regex: search, $options: 'i' } },
+                { name: { $regex: search, $options: 'i' } }
+            ];
+
+            const results = await Product.find(queryObj, {
+                _id: 1,
+                name: 1
+            });
+
+            res.status(200).json({
+                message: 'products searched list',
+                data: {
+                    results
+                }
+            });
+        } else {
+            res.status(404).json({
+                message: 'enter search text'
+            });
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
+
 module.exports = {
     createProduct,
     deleteProduct,
     viewProducts,
-    viewProductById
+    viewProductById,
+    searchProducts
 };
