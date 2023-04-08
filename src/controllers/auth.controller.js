@@ -23,8 +23,6 @@ const signUp = async (req, res) => {
 
         await newUser.save();
 
-        const auth = await sendEmailOtp(req, newUser);
-
         const { token, expireDate } = await generateBearerToken(newUser);
 
         res.status(201).json({
