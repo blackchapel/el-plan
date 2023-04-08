@@ -41,10 +41,12 @@ const LoginScreen =  ({navigation}) => {
 
     return (
         <SafeAreaView style={styles.body}>
+            <View style={{padding:20, justifyContent: "center", alignItems:"center"}}>
             <Image 
                 style={styles.image}
                 source={brandLogo}
             />
+            </View>
 
             <Text style={styles.loginText}>
                 Login
@@ -136,7 +138,6 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 57,
         marginTop: 50
     },
     loginText: {
