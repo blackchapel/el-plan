@@ -33,7 +33,7 @@ const LoginScreen =  ({navigation}) => {
                 await AsyncStorage.setItem('user', JSON.stringify(res.data.data.user));
             }
             console.log('Login Successful')
-            navigation.replace('Home');
+            navigation.replace('Drawer');
         } catch (error) {
             console.error(error);
         }

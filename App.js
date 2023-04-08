@@ -19,7 +19,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Home"
+          name="Drawer"
           component={DrawerNavigation}
           options={{ headerShown: false }}
         />
