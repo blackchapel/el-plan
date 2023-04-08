@@ -91,28 +91,12 @@ export default function NavBar() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
-            <Icon as={FaInstagram} />
-          <Button
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}>
-            Sign In
-          </Button>
-          <Button
-            as={'a'}
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'pink.400'}
-            href={'#'}
-            _hover={{
-              bg: 'pink.300',
-            }}>
-            Sign Up
-          </Button>
+            <NavLink to="https://www.instagram.com/ettarra_coffee/?hl=en" style={{marginLeft:10, marginRight: 10}}>
+            <Icon as={FaInstagram} color={"#E2C2AA"} height={30} size={"md"}/>
+            </NavLink>
+            <NavLink to="/signup" style={{marginLeft:10, marginRight: 10}}>
+            <Icon as={FaTwitter} color={"#E2C2AA"} height={30} size={"md"}/>
+            </NavLink>
         </Stack>
       </Flex>
 
