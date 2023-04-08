@@ -8,11 +8,45 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import Constants, { AppOwnership } from "expo-constants";
+import * as Linking from "expo-linking";
+import Web3Auth, { LOGIN_PROVIDER, OPENLOGIN_NETWORK } from "@web3auth/react-native-sdk";
+import * as WebBrowser from "expo-web-browser";
+
 const DrawerComponent = (props) => {
   const logout = async () => {
     await AsyncStorage.removeItem('token');
     props.navigation.replace('Login');
   };
+  
+    const clientId = "BH43YV4vR2zkxpGAAkq1uQEFXTp4wSC_As4GfkhzfpjKCWpjlNfiBqxcdRn3QBwFOoq7L81nG-tKXCteHu8YWwM";
+    const resolvedRedirectUrl =
+        Constants.appOwnership == AppOwnership.Expo || Constants.appOwnership == AppOwnership.Guest
+            ? Linking.createURL("web3auth", {})
+            : Linking.createURL("web3auth", { scheme: scheme });
+
+    const login = async () => {
+        try {
+            setConsole("Logging in");
+            const web3auth = new Web3Auth(WebBrowser, {
+                clientId,
+                network: OPENLOGIN_NETWORK.TESTNET, // or other networks
+            });
+
+            const info = await web3auth.login({
+                loginProvider: LOGIN_PROVIDER.GOOGLE,
+                redirectUrl: resolvedRedirectUrl,
+                mfaLevel: "none",
+                curve: "secp256k1",
+            });
+    
+            setUserInfo(info);
+            setKey(info.privKey);
+            console.log(info);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
   return (
     <View style={styles.body}>
@@ -20,7 +54,7 @@ const DrawerComponent = (props) => {
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
 
-      <View style={styles.bottomView}>
+      <View style={styles.bottomView} onPress={login}>
         <TouchableOpacity style={styles.bottomButton}>
           <MaterialIcons
             name="account-balance-wallet"
