@@ -1,27 +1,22 @@
 const Product = require('../models/product.schema');
-const { cloudinary } = require('./../utilities/utils')
-const fs = require('fs')
+const { cloudinary } = require('./../utilities/utils');
+const fs = require('fs');
 
 const createProduct = async (req, res) => {
     try {
         let url;
         if (req.file) {
-            url = await cloudinary.uploader.upload(
-                req.file.path,
-                {
-                    public_id: `elplan/product/${req.file.filename}`
-                }
-            );
+            url = await cloudinary.uploader.upload(req.file.path, {
+                public_id: `elplan/product/${req.file.filename}`
+            });
         }
-
         const product = new Product({
             name: req.body.name,
-            thumbnail: url ? url : undefined,
+            thumbnail: url ? url.url : undefined,
             category: req.body.category,
             price: req.body.price,
             description: req.body.description ? req.body.description : undefined
         });
-
         await product.save();
 
         fs.unlinkSync(req.file.path);
@@ -33,7 +28,7 @@ const createProduct = async (req, res) => {
             }
         });
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         res.status(500).json({
             message: error.message
         });

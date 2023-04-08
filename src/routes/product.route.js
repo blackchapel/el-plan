@@ -11,7 +11,7 @@ const {
 
 const router = express.Router();
 
-router.post('/', [auth.verifyJwt], upload.single('file'), createProduct);
+router.post('/', [auth.verifyJwt], upload.single('thumbnail'), createProduct);
 
 router.delete('/:id', [auth.verifyJwt], deleteProduct);
 
