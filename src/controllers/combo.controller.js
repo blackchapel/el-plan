@@ -1,10 +1,10 @@
 const Combo = require('../models/combo.schema');
-const Product = require('../models/combo.schema');
+const Product = require('../models/product.schema');
+var ObjectId = require('mongodb').ObjectId;
 
 const createCombo = async (req, res) => {
     try {
         let arrayOfIds = req.body.productIds;
-
         const combo = new Combo({
             name: req.body.name,
             comboPrice: req.body.comboPrice,
@@ -14,7 +14,7 @@ const createCombo = async (req, res) => {
 
         let ogPrice = 0;
 
-        for (const item of arrayOfIds) {
+        for await (const item of arrayOfIds) {
             let product = await Product.findById(item);
 
             combo.products.push({
@@ -24,12 +24,19 @@ const createCombo = async (req, res) => {
                 price: product.price
             });
 
-            ogPrice = ogPrice + product.price
+            ogPrice = ogPrice + product.price;
         }
 
         combo.originalPrice = ogPrice;
 
         await combo.save();
+
+        res.status(200).json({
+            message: 'Combo created',
+            data: {
+                combo
+            }
+        });
     } catch (error) {
         console.log(error.message);
         res.status(500).json({
@@ -74,8 +81,24 @@ const viewComboById = async (req, res) => {
     }
 };
 
+const deleteCombo = async (req, res) => {
+    try {
+        const combo = await Combo.findByIdAndDelete(req.params.id);
+
+        res.status(200).json({
+            message: 'Combo deleted'
+        });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
+
 module.exports = {
     createCombo,
     viewCombos,
-    viewComboById
+    viewComboById,
+    deleteCombo
 };
