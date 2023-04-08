@@ -2,8 +2,8 @@ import React from "react";
 import AdminLanding from "./pages/admin/admin_landing";
 import { Route, Routes } from "react-router-dom";
 import Landing from "./landing";
-import Login from "./pages/admin/login";
-import SignUp from "./pages/admin/signup";
+import Login from "./login";
+import SignUp from "./signup";
 
 function App() {
   return (

@@ -21,7 +21,7 @@ export default function Landing() {
   return (
     <>
     <NavBar />
-    <Container maxW={'7xl'}>
+    <Container maxWidth={"1000px"}>
       <Stack
         align={'center'}
         spacing={{ base: 8, md: 10 }}
