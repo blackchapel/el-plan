@@ -11,6 +11,7 @@ const productRoutes = require('./routes/product.route');
 const comboRoutes = require('./routes/combo.route');
 const userRoutes = require('./routes/user.route');
 const couponRoutes = require('./routes/coupon.route');
+const eventRoutes = require('./routes/event.route');
 
 // Initializing an express app
 const app = express();
@@ -32,6 +33,7 @@ app.use('/api/product', productRoutes);
 app.use('/api/combo', comboRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/coupon', couponRoutes);
+app.use('/api/event', eventRoutes);
 
 // Test API
 app.get('/api', (req, res) => {
