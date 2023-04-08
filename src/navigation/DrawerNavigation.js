@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-
+import BottomNavigation from './BottomNavigation';
 import DrawerComponent from '../components/DrawerComponent';
 import HomeScreen from '../screens/HomeScreen';
 
@@ -20,7 +20,7 @@ const DrawerNavigation = () => {
           drawerLabelStyle: { marginLeft: 5 }
         }}>
         <Drawer.Screen
-          component={HomeScreen}
+          component={BottomNavigation}
           name="Home"
           options={{
             drawerIcon: ({ color }) => {
