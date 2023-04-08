@@ -59,9 +59,11 @@ export default function NavBar() {
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Image src={Logo} height={30}/>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <NavLink to="/" style={{marginLeft:10, marginRight: 10}}>
               <Text
-                fontSize={'lg'}
+              as="a"
+              href="/home"
+              style={{marginLeft:20, marginRight: 20}}
+                fontSize={'md'}
                 fontWeight={500}
                 color={useColorModeValue('#E2C2AA', 'gray.200')}
                 _hover={{
@@ -70,10 +72,11 @@ export default function NavBar() {
                 }}>
                 Home
               </Text>
-            </NavLink>
-            <NavLink to="/aboutus" style={{marginLeft:10, marginRight: 10}}>
               <Text
-                fontSize={'lg'}
+              as="a"
+              href="/aboutus"
+              style={{marginLeft:20, marginRight: 20}}
+                fontSize={'md'}
                 fontWeight={500}
                 color={useColorModeValue('#E2C2AA', 'gray.200')}
                 _hover={{
@@ -82,7 +85,6 @@ export default function NavBar() {
                 }}>
                 About Us
               </Text>
-            </NavLink>
           </Flex>
         </Flex>
 

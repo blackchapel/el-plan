@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import React from 'react';
-
+import NavBar from '../src/components/admin/mainNavBar';
 export default function Login() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -34,7 +34,9 @@ export default function Login() {
   };
 
   return (
-    <Box position={'relative'}>
+    <>
+    <NavBar />
+    <Box position={'relative'} marginTop={30}>
       <Container
         as={SimpleGrid}
         maxW={'7xl'}
@@ -135,6 +137,7 @@ export default function Login() {
         style={{ filter: 'blur(70px)' }}
       />
     </Box>
+    </>
   );
 }
 

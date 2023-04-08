@@ -85,6 +85,7 @@ export default function gridListWith() {
 
   return (
     <div className="admin-landing-main">
+    <NavBar />
       <Box p={4}>
         {/* <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
           <Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'}>
