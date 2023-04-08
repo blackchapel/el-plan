@@ -11,12 +11,21 @@ import {
 } from "@chakra-ui/react";
 import { ReactElement } from "react";
 import "./admin_landing.css";
-import { FaBoxOpen, FaCoffee, FaGift, FaSalesforce, FaTrophy } from "react-icons/fa";
+import {
+  FaBoxOpen,
+  FaCoffee,
+  FaGift,
+  FaSalesforce,
+  FaTrophy,
+} from "react-icons/fa";
 
-const Card = ({ heading, description, icon, href }) => {
+const Card = ({ heading, description, icon, func }) => {
+    const handler = () => {
+        
+    }
   return (
     <Box
-        className="admin-card"
+      className="admin-card"
       bg={"#DCB9A3"}
       maxW={{ base: "full", md: "275px" }}
       w={"full"}
@@ -25,6 +34,7 @@ const Card = ({ heading, description, icon, href }) => {
       overflow="hidden"
       p={5}
       color={"#563300"}
+      onClick={func}
     >
       <Stack align={"start"} spacing={2}>
         <Flex
@@ -53,6 +63,26 @@ const Card = ({ heading, description, icon, href }) => {
 };
 
 export default function gridListWith() {
+  const scratchWinHandler = () => {
+    console.log("Scratch and win");
+  };
+
+  const comboHandler = () => {
+    console.log("Create combo")
+  }
+
+  const viewSalesHandler = () => {
+    console.log("View sales")
+  }
+
+  const loyaltyProgramHandler = () => {
+    console.log("Loyalty program handler")
+  }
+
+  const manageProductHandler = () => {
+    console.log("Manage products")
+  }
+
   return (
     <div className="admin-landing-main">
       <Box p={4}>
@@ -74,8 +104,8 @@ export default function gridListWith() {
               description={
                 "Create a scratch and win coupon which will be dispatched "
               }
-              href={"#"}
-              className="admin-card"
+              func={scratchWinHandler}
+              
             />
             <Card
               heading={"Create Combos"}
@@ -83,8 +113,7 @@ export default function gridListWith() {
               description={
                 "Create combos for users that increase sales and customize products based on sales"
               }
-              href={"#"}
-              className="admin-card"
+              func={comboHandler}
             />
             <Card
               heading={"View Sales"}
@@ -92,8 +121,7 @@ export default function gridListWith() {
               description={
                 "Detailed statistics about current sales used for analysis and planning strategy"
               }
-              href={"#"}
-              className="admin-card"
+              func={viewSalesHandler}
             />
             <Card
               heading={"Loyalty program"}
@@ -101,8 +129,7 @@ export default function gridListWith() {
               description={
                 "Program that awards points and maintains a leaderboard of customers"
               }
-              href={"#"}
-              className="admin-card"
+              func={loyaltyProgramHandler}
             />
             <Card
               heading={"Manage Products"}
@@ -110,8 +137,7 @@ export default function gridListWith() {
               description={
                 "List of all products along with inventory management like adding new products, deleting existing products."
               }
-              href={"#"}
-              className="admin-card"
+              func={manageProductHandler}
             />
           </Flex>
         </Container>
