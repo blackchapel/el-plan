@@ -9,7 +9,7 @@ import avatar from './../../assets/avatar.jpg'
 import { sliderData } from '../utils/data';
 import { windowWidth } from '../utils/dimensions';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
     const renderBanner = ({ item, index }) => {
         return <BannerComponent image={item} />;
     };
@@ -19,7 +19,9 @@ const HomeScreen = () => {
             <View style={styles.headerView}>
                 <Text style={styles.helloText}>Hello kc!</Text>
 
-                <Image source={avatar} style={styles.image} />
+                <TouchableOpacity onPress={() => navigation.openDrawer()}>
+                    <Image source={avatar} style={styles.image} />
+                </TouchableOpacity>
             </View>
 
             <View style={styles.search}>
