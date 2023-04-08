@@ -1,6 +1,11 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, Box } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Coupon1 from './../../assets/coupon-1.png'
+import Coupon2 from './../../assets/coupon-2.png'
+import Coupon3 from './../../assets/coupon-3.png'
+import Coupon4 from './../../assets/coupon-4.png'
+
 function Loyalty() {
   const [user, setUser] = React.useState({});
   React.useEffect(() => {
@@ -49,6 +54,19 @@ function Loyalty() {
           )}
         </View>
       </View>
+
+      <Text style={{fontWeight: 'bold', fontSize: 20, marginVertical: 20}} >Coupons</Text>
+      
+      <View>
+        <Image source={Coupon3} style={{ resizeMode: 'cover', height: 121, width: 360, marginBottom: 20, borderRadius: 15 }} />
+
+        <Image source={Coupon1} style={{ resizeMode: 'cover', height: 121, width: 360, marginBottom: 20, borderRadius: 15 }} />
+
+        <Image source={Coupon4} style={{ resizeMode: 'cover', height: 121, width: 360, marginBottom: 20, borderRadius: 15 }} />
+
+        <Image source={Coupon2} style={{ resizeMode: 'cover', height: 121, width: 360, borderRadius: 15 }} />
+      </View>
+
     </View>
   );
 }
@@ -56,7 +74,7 @@ function Loyalty() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "flex-start",
     justifyContent: "flex-start",
     padding: 16,
