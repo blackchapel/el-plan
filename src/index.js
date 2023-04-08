@@ -10,6 +10,7 @@ const authRoutes = require('./routes/auth.route');
 const productRoutes = require('./routes/product.route');
 const comboRoutes = require('./routes/combo.route');
 const userRoutes = require('./routes/user.route');
+const couponRoutes = require('./routes/coupon.route');
 
 // Initializing an express app
 const app = express();
@@ -30,6 +31,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/combo', comboRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/coupon', couponRoutes);
 
 // Test API
 app.get('/api', (req, res) => {
