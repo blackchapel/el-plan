@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema(
                 'Please enter a valid email address'
             ]
         },
+        instaId: {
+            type: String,
+            required: false
+        },
         password: {
             type: String,
             trim: true
