@@ -4,6 +4,32 @@ const Product = require('../models/combo.schema');
 const createCombo = async (req, res) => {
     try {
         let arrayOfIds = req.body.productIds;
+
+        const combo = new Combo({
+            name: req.body.name,
+            comboPrice: req.body.comboPrice,
+            originalPrice: 0,
+            products: []
+        });
+
+        let ogPrice = 0;
+
+        for (const item of arrayOfIds) {
+            let product = await Product.findById(item);
+
+            combo.products.push({
+                id: product.id,
+                name: product.name,
+                thumbnail: product.thumbnail,
+                price: product.price
+            });
+
+            ogPrice = ogPrice + product.price
+        }
+
+        combo.originalPrice = ogPrice;
+
+        await combo.save();
     } catch (error) {
         console.log(error.message);
         res.status(500).json({
@@ -46,4 +72,10 @@ const viewComboById = async (req, res) => {
             message: error.message
         });
     }
+};
+
+module.exports = {
+    createCombo,
+    viewCombos,
+    viewComboById
 };

@@ -1,7 +1,6 @@
 const express = require('express');
 const auth = require('./../middlewares/authentication.middleware');
 const upload = require('./../configs/multer');
-
 const {
     createProduct,
     deleteProduct,
@@ -12,7 +11,7 @@ const {
 
 const router = express.Router();
 
-router.post('/create', [auth.verifyJwt], upload.single('file'), createProduct);
+router.post('/', [auth.verifyJwt], upload.single('file'), createProduct);
 
 router.delete('/:id', [auth.verifyJwt], deleteProduct);
 
