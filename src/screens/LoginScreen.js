@@ -8,7 +8,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import brandLogo from '../../assets/brand-logo.png';
 import { BASE_URL, LOGIN_PATH } from '../utils/config';
 
-const LoginScreen =  () => {
+const LoginScreen =  ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -32,8 +32,8 @@ const LoginScreen =  () => {
                 );
                 await AsyncStorage.setItem('user', JSON.stringify(res.data.data.user));
             }
-
             console.log('Login Successful')
+            navigation.replace('Home');
         } catch (error) {
             console.error(error);
         }
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 85,
+        marginHorizontal: 57,
         marginTop: 50
     },
     loginText: {
