@@ -49,6 +49,7 @@ const login = async (req, res) => {
             email: req.body.email,
             isDeleted: false
         });
+        console.log(user);
 
         if (!user) {
             res.status(404).json({
