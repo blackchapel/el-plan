@@ -13,9 +13,8 @@ import {
   IconProps,
   useColorModeValue,
 } from '@chakra-ui/react';
-
+import NavBar from '../src/components/admin/mainNavBar';
 import landing from './land.jpg';
-import NavBar from './components/admin/mainNavBar';
 
 export default function Landing() {
   return (
@@ -60,6 +59,8 @@ export default function Landing() {
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: 'column', sm: 'row' }}>
             <Button
+            as="a"
+            href="/login"
               rounded={'full'}
               size={'lg'}
               fontWeight={'normal'}
@@ -70,6 +71,8 @@ export default function Landing() {
               Login
             </Button>
             <Button
+            as="a"
+            href="/signup"
               rounded={'full'}
               size={'lg'}
               fontWeight={'normal'}

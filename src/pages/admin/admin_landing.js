@@ -12,6 +12,7 @@ import {
 import { ReactElement } from "react";
 import "./admin_landing.css";
 import { FaBoxOpen, FaCoffee, FaGift, FaSalesforce, FaTrophy } from "react-icons/fa";
+import NavBar from "../../components/admin/mainNavBar";
 
 const Card = ({ heading, description, icon, href }) => {
   return (
@@ -55,6 +56,7 @@ const Card = ({ heading, description, icon, href }) => {
 export default function gridListWith() {
   return (
     <div className="admin-landing-main">
+    <NavBar />
       <Box p={4}>
         {/* <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
           <Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'}>
