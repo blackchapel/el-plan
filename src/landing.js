@@ -15,9 +15,12 @@ import {
 } from '@chakra-ui/react';
 
 import landing from './land.jpg';
+import NavBar from './components/admin/mainNavBar';
 
 export default function Landing() {
   return (
+    <>
+    <NavBar />
     <Container maxW={'7xl'}>
       <Stack
         align={'center'}
@@ -120,6 +123,7 @@ export default function Landing() {
         </Flex>
       </Stack>
     </Container>
+    </>
   );
 }
 
