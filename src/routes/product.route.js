@@ -19,6 +19,6 @@ router.get('/', [auth.verifyJwt], viewProducts);
 
 router.get('/:id', [auth.verifyJwt], viewProductById);
 
-router.get('/search', [auth.verifyJwt], searchProducts);
+router.get('/noob/search', [auth.verifyJwt], searchProducts);
 
 module.exports = router;
