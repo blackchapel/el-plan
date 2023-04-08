@@ -74,6 +74,10 @@ const userSchema = new mongoose.Schema(
         points: {
             type: Number,
             default: 0
+        },
+        isWalletActivated: {
+            type: Boolean,
+            default: false
         }
     },
     { timestamps: true }

@@ -42,7 +42,32 @@ const addPoints = async (req, res) => {
     }
 };
 
+const activateWallet = async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(
+            req.params.id,
+            {
+                isWalletActivated: true
+            },
+            { new: true }
+        );
+
+        res.status(201).json({
+            message: 'User Wallet Activated',
+            data: {
+                user
+            }
+        });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
+
 module.exports = {
     viewLeaderboard,
-    addPoints
+    addPoints,
+    activateWallet
 };
