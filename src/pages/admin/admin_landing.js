@@ -18,6 +18,7 @@ import {
   FaSalesforce,
   FaTrophy,
 } from "react-icons/fa";
+import AdminNavbar from "../../components/admin/admin_navbar/adminNavbar"
 
 const Card = ({ heading, description, icon, func }) => {
     const handler = () => {
@@ -85,17 +86,13 @@ export default function gridListWith() {
 
   return (
     <div className="admin-landing-main">
-    <NavBar />
+    <AdminNavbar />
       <Box p={4}>
-        {/* <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
-          <Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'}>
-            Short heading
+        <Stack spacing={3} as={Container} maxW={'3xl'} textAlign={'center'}>
+          <Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} fontFamily={"Delicious Handrawn"}>
+            The coffee house
           </Heading>
-          <Text color={'gray.600'} fontSize={{ base: 'sm', sm: 'lg' }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            obcaecati ut cupiditate pariatur, dignissimos, placeat amet officiis.
-          </Text>
-        </Stack> */}
+        </Stack>
 
         <Container maxW={"5xl"} mt={12}>
           <Flex flexWrap="wrap" gridGap={6} justify="center">

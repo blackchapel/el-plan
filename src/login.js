@@ -14,9 +14,11 @@ import {
 import axios from 'axios';
 import React from 'react';
 import NavBar from '../src/components/admin/mainNavBar';
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     console.log(process.env.BASE_URL)
@@ -25,7 +27,9 @@ export default function Login() {
         email: email,
         password: password,
       });
-      console.log(response);
+      localStorage.setItem("token", response.data.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.data.user));
+      navigate("/admin");
       setEmail('');
       setPassword('');
     }catch(e){
@@ -95,6 +99,7 @@ export default function Login() {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
+                value={email}
               />
               <Input
                 placeholder="Password"
@@ -110,6 +115,7 @@ export default function Login() {
                   (e) => {
                     setPassword(e.target.value);
                 }}
+                value={password}
               />
             </Stack>
             <Button
