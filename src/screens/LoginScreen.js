@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderBottomWidth: 1,
         borderColor: '#563300',
-        marginBottom: 20
+        marginBottom: 28
     },
     forgortPasswordView: {
         alignItems: 'flex-end',
