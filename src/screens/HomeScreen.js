@@ -27,7 +27,7 @@ const HomeScreen = ({ navigation }) => {
         }
 
         getUser();
-    })
+    });
 
     const getProducts = async (s) => {
         if(s.length < 1) {setSearchProds([]);return;}
