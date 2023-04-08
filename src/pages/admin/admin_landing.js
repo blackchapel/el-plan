@@ -19,11 +19,10 @@ import {
   FaTrophy,
 } from "react-icons/fa";
 import AdminNavbar from "../../components/admin/admin_navbar/adminNavbar"
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ heading, description, icon, func }) => {
-    const handler = () => {
-        
-    }
+    
   return (
     <Box
       className="admin-card"
@@ -63,7 +62,9 @@ const Card = ({ heading, description, icon, func }) => {
   );
 };
 
-export default function gridListWith() {
+export default function GridListWith() {
+  const navigate = useNavigate()
+
   const scratchWinHandler = () => {
     console.log("Scratch and win");
   };
@@ -81,7 +82,7 @@ export default function gridListWith() {
   }
 
   const manageProductHandler = () => {
-    console.log("Manage products")
+    navigate("/admin/manageProducts")
   }
 
   return (

@@ -26,10 +26,17 @@ import {
     ChevronRightIcon,
   } from '@chakra-ui/icons';
   import Logo from "../../../assets/logowhite.png";
-  import { NavLink } from 'react-router-dom';
+  import { NavLink, useNavigate } from 'react-router-dom';
   
   export default function NavBar() {
     const { isOpen, onToggle } = useDisclosure();
+    const navigate = useNavigate()
+
+    const adminLogouthandler = () => {
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+      navigate("/home")
+    }
   
     return (
       <Box>
@@ -66,7 +73,7 @@ import {
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
-              <Button variant={"solid"} bgColor={"#FEEDDC"} color={"#563300"}>Logout</Button>
+              <Button variant={"solid"} bgColor={"#FEEDDC"} color={"#563300"} onClick={adminLogouthandler} >Logout</Button>
           </Stack>
         </Flex>
   
