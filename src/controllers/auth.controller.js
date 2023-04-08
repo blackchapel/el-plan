@@ -28,7 +28,6 @@ const signUp = async (req, res) => {
         res.status(201).json({
             message: 'User registered',
             data: {
-                authEmailId: auth._id,
                 user: newUser,
                 token,
                 expireDate
