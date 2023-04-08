@@ -1,7 +1,7 @@
-.card-coupon {
+.card-combo {
     transition: all 0.3s ease-in-out;
 }
 
-.card-coupon:hover {
+.card-combo:hover {
     transform: translate3D(0,-1px,0) scale(1.03);
 }

@@ -1,20 +1,20 @@
 import { Card, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, Button, ButtonGroup } from "@chakra-ui/react";
-import "./CardCoupon.css"
-import scratch_coupon from "../../../assets/scratch_coupon.jpg"
+import "./CardCombo.css"
+import create_combo1 from "../../../assets/create_combo.jpg"
 
-const CardCoupon = () => {
+const CardCombo = () => {
   return (
-    <Card maxW="sm" className = 'card-coupon' maxH="md">
-      <CardBody height={200}>
+    <Card maxW="sm" className = 'card-combo' maxH="md">
+      <CardBody >
         <Image
-          src={scratch_coupon}
-          alt="Scratch Card coupong"
+          src={create_combo1}
+          alt="Green double couch with wooden legs"
           borderRadius="lg"
         />
         <Stack mt="6" spacing="3">
-          <Heading size="md">Scratch and win</Heading>
+          <Heading size="md">Create combos</Heading>
           <Text>
-            Create a scratch and win coupon for users. Dispatched as an incentive when user spends a certain amount
+            Create interesting combos that tend to attract more customers. Customize according to needs.
           </Text>
           
         </Stack>
@@ -34,4 +34,4 @@ const CardCoupon = () => {
   );
 };
 
-export default CardCoupon
+export default CardCombo

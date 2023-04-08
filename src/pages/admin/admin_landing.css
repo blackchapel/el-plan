@@ -1,7 +1,11 @@
-.card-coupon {
+.admin-card {
     transition: all 0.3s ease-in-out;
 }
 
-.card-coupon:hover {
+.admin-card:hover {
     transform: translate3D(0,-1px,0) scale(1.03);
+}
+
+.admin-landing-main {
+    background-color: #FEEDDC;
 }
