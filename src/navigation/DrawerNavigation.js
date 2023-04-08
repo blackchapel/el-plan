@@ -21,7 +21,7 @@ const DrawerNavigation = () => {
         }}>
         <Drawer.Screen
           component={BottomNavigation}
-          name="Home"
+          name="Home Page"
           options={{
             drawerIcon: ({ color }) => {
               <MaterialIcons name="home" size={22} color={color} />;

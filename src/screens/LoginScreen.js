@@ -28,7 +28,7 @@ const LoginScreen =  ({navigation}) => {
             ) {
                 await AsyncStorage.setItem(
                     'token',
-                    JSON.stringify(res.data.data.token)
+                    res.data.data.token
                 );
                 await AsyncStorage.setItem('user', JSON.stringify(res.data.data.user));
             }
