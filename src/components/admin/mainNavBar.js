@@ -16,6 +16,9 @@ import {
   Image,
   useDisclosure,
 } from '@chakra-ui/react';
+
+import {FaInstagram, FaTwitter} from "react-icons/fa"
+
 import {
   HamburgerIcon,
   CloseIcon,
@@ -88,6 +91,7 @@ export default function NavBar() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
+            <Icon as={FaInstagram} />
           <Button
             as={'a'}
             fontSize={'sm'}
