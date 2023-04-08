@@ -8,6 +8,17 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  UnorderedList,
+  ListItem,
+  Input
 } from "@chakra-ui/react";
 import { ReactElement } from "react";
 import "./admin_landing.css";
@@ -17,13 +28,14 @@ import {
   FaGift,
   FaSalesforce,
   FaTrophy,
+  FaCheck
 } from "react-icons/fa";
-import AdminNavbar from "../../components/admin/admin_navbar/adminNavbar"
+import AdminNavbar from "../../components/admin/admin_navbar/adminNavbar";
+import React from "react";
+import axios from "axios";
 
 const Card = ({ heading, description, icon, func }) => {
-    const handler = () => {
-        
-    }
+  const handler = () => {};
   return (
     <Box
       className="admin-card"
@@ -63,33 +75,87 @@ const Card = ({ heading, description, icon, func }) => {
   );
 };
 
-export default function gridListWith() {
+export default function GridListWith() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [combo, setCombo] = React.useState([]);
+  const [selectedCombo, setSelectedCombo] = React.useState([]);
+  const [comboName, setComboName] = React.useState("");
+  const [comboPrice, setComboPrice] = React.useState(0);
+
+  const getProducts = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios.get(
+        "https://el-plan-production.up.railway.app/api/product/",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setCombo(response.data.data.products);
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  };
+
+  const createCombo = async () => {
+    const token = localStorage.getItem("token");
+    const ids = selectedCombo.map((item) => item._id)
+    try {
+      const response = await axios.post(
+        "https://el-plan-production.up.railway.app/api/combo/",
+        {
+          name: comboName,
+          comboPrice:parseInt(comboPrice),
+          productIds: ids,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert(response.data.message);
+      setComboName("");
+      setComboPrice(0);
+      onClose();
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  };
+
   const scratchWinHandler = () => {
     console.log("Scratch and win");
   };
 
-  const comboHandler = () => {
-    console.log("Create combo")
-  }
+  const createComboHandler = () => {
+    onOpen();
+    getProducts();
+  };
 
   const viewSalesHandler = () => {
-    console.log("View sales")
-  }
+    console.log("View sales");
+  };
 
   const loyaltyProgramHandler = () => {
-    console.log("Loyalty program handler")
-  }
+    console.log("Loyalty program handler");
+  };
 
   const manageProductHandler = () => {
-    console.log("Manage products")
-  }
+    console.log("Manage products");
+  };
 
   return (
     <div className="admin-landing-main">
-    <AdminNavbar />
+      <AdminNavbar />
       <Box p={4}>
-        <Stack spacing={3} as={Container} maxW={'3xl'} textAlign={'center'}>
-          <Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} fontFamily={"Delicious Handrawn"}>
+        <Stack spacing={3} as={Container} maxW={"3xl"} textAlign={"center"}>
+          <Heading
+            fontSize={{ base: "2xl", sm: "4xl" }}
+            fontWeight={"bold"}
+            fontFamily={"Delicious Handrawn"}
+          >
             The coffee house
           </Heading>
         </Stack>
@@ -103,16 +169,69 @@ export default function gridListWith() {
                 "Create a scratch and win coupon which will be dispatched "
               }
               func={scratchWinHandler}
-              
             />
+
             <Card
               heading={"Create Combos"}
               icon={<Icon as={FaCoffee} w={10} h={10} />}
               description={
                 "Create combos for users that increase sales and customize products based on sales"
               }
-              func={comboHandler}
+              func={createComboHandler}
             />
+            <Modal isOpen={isOpen} onClose={onClose}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Create a Combo</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody bgColor={"#FEEDDC"}>
+                  <div style={{fontWeight:"bold",textAlign:"center", marginBottom:10}}>Products:</div>
+                  {combo &&
+                    combo.map((item) => {
+                      return (
+                        <div>
+                          {selectedCombo.includes(item) ? (
+                            <div
+                              bgColor={"grey.500"}
+                              onClick={() => {
+                                  const newCombo = selectedCombo.filter(
+                                    (comboItem) => comboItem !== item
+                                  );
+                                  setSelectedCombo(newCombo);
+                              }}
+                            >
+                              <Icon as={FaCheck} />{item.name} - Rs.{item.price}
+                            </div>
+                          ) : (
+                            <div
+                              onClick={() => {
+                                const newCombo = [...selectedCombo, item];
+                                setSelectedCombo(newCombo);
+                              }}
+                            >
+                              {item.name} - Rs.{item.price}
+                            </div>
+                          )}
+                        </div>
+                      );
+                  })}
+                  <Box mt={4}>
+                    <Text>Combo Name:</Text>
+                    <Input placeholder="Combo Name" onChange={e=>setComboName(e.target.value)} value={comboName}/>
+                  </Box>
+                  <Box mt={4}>
+                    <Text>Combo Price:</Text>
+                    <Input placeholder="Combo Price" onChange={e=>setComboPrice(e.target.value)} value={comboPrice}/>
+                  </Box>
+                </ModalBody>
+                <ModalFooter>
+                  <Button bgColor={"#563300"} color={"#FEEDDC"} mr={3} onClick={onClose}>
+                    Close
+                  </Button>
+                  <Button variant="outline" color={"#563300"} onClick={createCombo}>Create</Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
             <Card
               heading={"View Sales"}
               icon={<Icon as={FaSalesforce} w={10} h={10} />}
