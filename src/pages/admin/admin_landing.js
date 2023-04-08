@@ -143,8 +143,13 @@ export default function GridListWith() {
   };
 
   const manageProductHandler = () => {
+<<<<<<< HEAD
     console.log("Manage products");
   };
+=======
+    navigate("/admin/manageProducts")
+  }
+>>>>>>> 7bd434302b35b461a108ec058171cc191657b88a
 
   return (
     <div className="admin-landing-main">
