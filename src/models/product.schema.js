@@ -17,7 +17,8 @@ const productSchema = new mongoose.Schema(
                 'coldCoffee',
                 'coffeeCoolers',
                 'notCoffee',
-                'manualBrew'
+                'manualBrew',
+                'foodItem'
             ]
         },
         price: {
