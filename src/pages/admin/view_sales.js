@@ -113,8 +113,9 @@ const ViewSales = () => {
           <Thead>
             <Th>Pos.</Th>
             <Th>Customer name</Th>
-            <Th isNumeric>Points</Th>
+            <Th >Points</Th>
             <Th>Action</Th>
+            <Th>Incentive</Th>
           </Thead>
           <Tbody>
             {customers.map((customer, idx) => {
@@ -168,6 +169,7 @@ const ViewSales = () => {
                       Add
                     </Button>
                   </Td>
+                  {idx<3 ? <Td><Button disabled>Shoutout</Button></Td> : <Td>-</Td>}
                 </Tr>
               );
             })}

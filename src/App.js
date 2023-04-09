@@ -7,6 +7,8 @@ import SignUp from "./signup";
 import ManageProduct from "./pages/admin/manage_products"
 import ViewSales from "./pages/admin/view_sales";
 import CouponManager from "./pages/admin/coupon_manager";
+import CreateEvents from "./pages/admin/create_events";
+import Loyalty from "./pages/admin/loyalty";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route element={<ManageProduct />} path="admin/manageProducts" />
         <Route element={<ViewSales />} path="admin/viewSales" />
         <Route element={<CouponManager />} path="admin/couponManager" />
+        <Route element= {<CreateEvents />} path="admin/manageEvents" />
+        <Route element={<Loyalty />} path="admin/loyalty" />
       </Routes>
     
   );

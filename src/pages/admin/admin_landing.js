@@ -31,6 +31,7 @@ import {
   FaSalesforce,
   FaTrophy,
   FaCheck,
+  FaWineGlass
 } from "react-icons/fa";
 import AdminNavbar from "../../components/admin/admin_navbar/adminNavbar";
 import React from "react";
@@ -145,11 +146,16 @@ export default function GridListWith() {
 
   const loyaltyProgramHandler = () => {
     console.log("Loyalty program handler");
+    navigate("/admin/loyalty")
   };
 
   const manageProductHandler = () => {
     navigate("/admin/manageProducts");
   };
+
+  const manageEventsHandler = () => {
+    navigate('/admin/manageEvents')
+  }
 
   return (
     <div className="admin-landing-main">
@@ -277,7 +283,7 @@ export default function GridListWith() {
             />
             <Card
               heading={"Loyalty program"}
-              icon={<Icon as={FaTrophy} w={10} h={10} />}
+              icon={<Icon as={FaTrophy}   w={10} h={10} />}
               description={
                 "Program that awards points and maintains a leaderboard of customers"
               }
@@ -290,6 +296,14 @@ export default function GridListWith() {
                 "List of all products along with inventory management like adding new products, deleting existing products."
               }
               func={manageProductHandler}
+            />
+            <Card
+              heading={"Create events"}
+              icon={<Icon as={FaWineGlass} w={10} h={10} />}
+              description={
+                "Can create new events based on the needs and/or festivals in the near future."
+              }
+              func={manageEventsHandler}
             />
           </Flex>
         </Container>
