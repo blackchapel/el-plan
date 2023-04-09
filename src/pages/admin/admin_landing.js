@@ -18,9 +18,11 @@ import {
   useDisclosure,
   UnorderedList,
   ListItem,
-  Input
+  Input,
+  FormLabel,
+  Select
 } from "@chakra-ui/react";
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import "./admin_landing.css";
 import {
   FaBoxOpen,
@@ -28,13 +30,12 @@ import {
   FaGift,
   FaSalesforce,
   FaTrophy,
-  FaCheck
+  FaCheck,
 } from "react-icons/fa";
 import AdminNavbar from "../../components/admin/admin_navbar/adminNavbar";
 import React from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ heading, description, icon, func }) => {
   return (
@@ -103,13 +104,13 @@ export default function GridListWith() {
 
   const createCombo = async () => {
     const token = localStorage.getItem("token");
-    const ids = selectedCombo.map((item) => item._id)
+    const ids = selectedCombo.map((item) => item._id);
     try {
       const response = await axios.post(
         "https://el-plan-production.up.railway.app/api/combo/",
         {
           name: comboName,
-          comboPrice:parseInt(comboPrice),
+          comboPrice: parseInt(comboPrice),
           productIds: ids,
         },
         {
@@ -127,8 +128,9 @@ export default function GridListWith() {
     }
   };
 
+
   const scratchWinHandler = () => {
-    console.log("Scratch and win");
+    navigate("/admin/couponManager")
   };
 
   const createComboHandler = () => {
@@ -138,6 +140,7 @@ export default function GridListWith() {
 
   const viewSalesHandler = () => {
     console.log("View sales");
+    navigate("/admin/viewSales");
   };
 
   const loyaltyProgramHandler = () => {
@@ -145,8 +148,8 @@ export default function GridListWith() {
   };
 
   const manageProductHandler = () => {
-    navigate("/admin/manageProducts")
-  }
+    navigate("/admin/manageProducts");
+  };
 
   return (
     <div className="admin-landing-main">
@@ -173,6 +176,7 @@ export default function GridListWith() {
               func={scratchWinHandler}
             />
 
+          
             <Card
               heading={"Create Combos"}
               icon={<Icon as={FaCoffee} w={10} h={10} />}
@@ -187,22 +191,32 @@ export default function GridListWith() {
                 <ModalHeader>Create a Combo</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody bgColor={"#FEEDDC"}>
-                  <div style={{fontWeight:"bold",textAlign:"center", marginBottom:10}}>Products:</div>
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      marginBottom: 10,
+                    }}
+                  >
+                    Products:
+                  </div>
                   {combo &&
                     combo.map((item) => {
                       return (
                         <div>
                           {selectedCombo.includes(item) ? (
                             <div
+                              className="combo-hover"
                               bgColor={"grey.500"}
                               onClick={() => {
-                                  const newCombo = selectedCombo.filter(
-                                    (comboItem) => comboItem !== item
-                                  );
-                                  setSelectedCombo(newCombo);
+                                const newCombo = selectedCombo.filter(
+                                  (comboItem) => comboItem !== item
+                                );
+                                setSelectedCombo(newCombo);
                               }}
                             >
-                              <Icon as={FaCheck} />{item.name} - Rs.{item.price}
+                              <Icon as={FaCheck} />
+                              {item.name} - Rs.{item.price}
                             </div>
                           ) : (
                             <div
@@ -216,26 +230,45 @@ export default function GridListWith() {
                           )}
                         </div>
                       );
-                  })}
+                    })}
                   <Box mt={4}>
                     <Text>Combo Name:</Text>
-                    <Input placeholder="Combo Name" onChange={e=>setComboName(e.target.value)} value={comboName}/>
+                    <Input
+                      placeholder="Combo Name"
+                      onChange={(e) => setComboName(e.target.value)}
+                      value={comboName}
+                    />
                   </Box>
                   <Box mt={4}>
                     <Text>Combo Price:</Text>
-                    <Input placeholder="Combo Price" onChange={e=>setComboPrice(e.target.value)} value={comboPrice}/>
+                    <Input
+                      placeholder="Combo Price"
+                      onChange={(e) => setComboPrice(e.target.value)}
+                      value={comboPrice}
+                    />
                   </Box>
                 </ModalBody>
                 <ModalFooter>
-                  <Button bgColor={"#563300"} color={"#FEEDDC"} mr={3} onClick={onClose}>
+                  <Button
+                    bgColor={"#563300"}
+                    color={"#FEEDDC"}
+                    mr={3}
+                    onClick={onClose}
+                  >
                     Close
                   </Button>
-                  <Button variant="outline" color={"#563300"} onClick={createCombo}>Create</Button>
+                  <Button
+                    variant="outline"
+                    color={"#563300"}
+                    onClick={createCombo}
+                  >
+                    Create
+                  </Button>
                 </ModalFooter>
               </ModalContent>
             </Modal>
             <Card
-              heading={"View Sales"}
+              heading={"Manage Sales"}
               icon={<Icon as={FaSalesforce} w={10} h={10} />}
               description={
                 "Detailed statistics about current sales used for analysis and planning strategy"

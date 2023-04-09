@@ -1,0 +1,9 @@
+.coupon{
+    width: 400px;
+    height: 200px;
+    transition: all 0.3s ease-in;
+}
+
+.coupon:hover {
+    transform: scale(1.03);
+}

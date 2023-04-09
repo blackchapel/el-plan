@@ -12,3 +12,7 @@
 .admin-landing-main {
     background-color: #FEEDDC;
 }
+
+.combo-hover:hover {
+    cursor: pointer;
+}
