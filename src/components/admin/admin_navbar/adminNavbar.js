@@ -37,6 +37,18 @@ import {
       localStorage.removeItem("user")
       navigate("/home")
     }
+
+    const adminConnectHandler = () =>{
+      if(window.ethereum){
+        window.ethereum.request({method:'eth_requestAccounts'})
+        .then(res=>{
+          // Return the address of the wallet
+          console.log(res) 
+      })
+      }else{
+        alert("install metamask extension!!")
+      }
+    }
   
     return (
       <Box>
@@ -73,6 +85,7 @@ import {
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
+              <Button variant={"solid"} bgColor={"#FEEDDC"} color={"#563300"} onClick={adminConnectHandler} >Connect Wallet</Button>
               <Button variant={"solid"} bgColor={"#FEEDDC"} color={"#563300"} onClick={adminLogouthandler} >Logout</Button>
           </Stack>
         </Flex>
