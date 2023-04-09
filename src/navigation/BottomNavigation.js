@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from '../screens/HomeScreen';
 import Loyalty from '../screens/Loyalty';
 import { Entypo } from "@expo/vector-icons";
+import EventScreen from '../screens/EventScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,8 +18,8 @@ function BottomNavigation() {
         } else if (route.name === "Loyalty") {
           iconName = "credit-card";
         }
-        else if (route.name === "Cart") {
-          iconName = "users";
+        else if (route.name === "Exclusive Events") {
+          iconName = "calendar";
         }
 
         // You can return any component that you like here!
@@ -32,7 +33,7 @@ function BottomNavigation() {
     })}>
       <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
       <Tab.Screen name="Loyalty" component={Loyalty} options={{ headerShown: false }}/>
-      <Tab.Screen name="Cart" component={HomeScreen} options={{ headerShown: false }}/>
+      <Tab.Screen name="Exclusive Events" component={EventScreen} options={{ headerShown: false }}/>
     </Tab.Navigator>
   )
 }
