@@ -8,17 +8,19 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import brandLogo from '../../assets/brand-logo.png';
 import { BASE_URL, LOGIN_PATH } from '../utils/config';
 
-const LoginScreen =  ({navigation}) => {
+const RegisterScreen =  ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [instaId, setInstaId] = useState('');
 
     const login = async () => {
         try {
-            const url = `${BASE_URL}/${LOGIN_PATH}`;
-
-            const res = await axios.post(url, {
+            const res = await axios.post("https://el-plan-production.up.railway.app/api/auth/signup", {
                 email: email,
-                password: password
+                password: password,
+                instaId: instaId,
+                name: name
             });
 
             if (
@@ -32,8 +34,7 @@ const LoginScreen =  ({navigation}) => {
                 );
                 await AsyncStorage.setItem('user', JSON.stringify(res.data.data.user));
             }
-            console.log('Login Successful')
-            navigation.replace('Drawer');
+            navigation.replace('Login');
         } catch (error) {
             console.error(error);
         }
@@ -49,8 +50,28 @@ const LoginScreen =  ({navigation}) => {
             </View>
 
             <Text style={styles.loginText}>
-                Login
+                SignUp
             </Text>
+
+            <View style={styles.input}>
+                <MaterialIcons
+                    name="person"
+                    size={22}
+                    color={'#AB877D'}
+                />
+                <TextInput
+                    placeholder="Name"
+                    enterKeyHint="done"
+                    secureTextEntry={true}
+                    onChangeText={(value) => setName(value)}
+                    ref={(input) => {
+                        this.secondTextInput = input;
+                    }}
+                    style={{
+                        marginHorizontal: 10
+                    }}
+                />
+            </View>
 
             <View style={styles.input}>
                 <MaterialIcons
@@ -93,13 +114,27 @@ const LoginScreen =  ({navigation}) => {
                 />
             </View>
 
-            <View style={styles.forgortPasswordView}>
-                <TouchableOpacity>
-                    <Text style={styles.forgortPasswordText}>
-                        Forgot Password?
-                    </Text>
-                </TouchableOpacity>
+            <View style={styles.input}>
+                <MaterialIcons
+                    name="phone-android"
+                    size={22}
+                    color={'#AB877D'}
+                />
+                <TextInput
+                    placeholder="Insta Handle"
+                    enterKeyHint="done"
+                    secureTextEntry={true}
+                    onChangeText={(value) => setInstaId(value)}
+                    ref={(input) => {
+                        this.secondTextInput = input;
+                    }}
+                    style={{
+                        marginHorizontal: 10
+                    }}
+                />
             </View>
+
+            
 
             <View>
                 <TouchableOpacity 
@@ -107,17 +142,7 @@ const LoginScreen =  ({navigation}) => {
                     onPress={login}
                 >
                     <Text style={styles.loginButtonText}>
-                        Sign In
-                    </Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.registerButtonView}>
-                <Text>New to the app? </Text>
-
-                <TouchableOpacity onPress={()=>{navigation.navigate("Register")}}>
-                    <Text style={styles.registerButton}>
-                        Register
+                        Sign Up
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -185,4 +210,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default LoginScreen;
+export default RegisterScreen;
