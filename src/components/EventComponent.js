@@ -6,14 +6,14 @@ const EventComponent = (props) => {
         <View style={styles.container} >
             <View style={styles.card}>
                 <Image
-                    source={props.image}
+                    source={props.item.thumbnail}
                     style={styles.image}
                     />
 
                 <View style={styles.details}>
-                    <Text style={styles.customerName}>{props.name}</Text>
+                    <Text style={styles.customerName}>{props.item.name}</Text>
 
-                    <Text style={styles.loyaltyPoints}>{props.description}</Text>
+                    <Text style={styles.loyaltyPoints}>{props.item.description}</Text>
                 </View>
             </View>
         </View>
