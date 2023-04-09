@@ -5,6 +5,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomNavigation from './BottomNavigation';
 import DrawerComponent from '../components/DrawerComponent';
 import HomeScreen from '../screens/HomeScreen';
+import LeaderboardScreen from '../screens/LeaderboardScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -25,6 +26,15 @@ const DrawerNavigation = () => {
           options={{
             drawerIcon: ({ color }) => {
               <MaterialIcons name="home" size={22} color={color} />;
+            }
+          }}
+        />
+        <Drawer.Screen
+          component={LeaderboardScreen}
+          name="Leaderboard"
+          options={{
+            drawerIcon: ({ color }) => {
+              <MaterialIcons name="list" size={22} color={color} />;
             }
           }}
         />
