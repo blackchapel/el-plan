@@ -17,8 +17,8 @@ function BottomNavigation() {
         } else if (route.name === "Loyalty") {
           iconName = "credit-card";
         }
-        else if (route.name === "Cart") {
-          iconName = "users";
+        else if (route.name === "Exclusive Events") {
+          iconName = "calendar";
         }
 
         // You can return any component that you like here!
@@ -32,7 +32,7 @@ function BottomNavigation() {
     })}>
       <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
       <Tab.Screen name="Loyalty" component={Loyalty} options={{ headerShown: false }}/>
-      <Tab.Screen name="Cart" component={HomeScreen} options={{ headerShown: false }}/>
+      <Tab.Screen name="Exclusive Events" component={HomeScreen} options={{ headerShown: false }}/>
     </Tab.Navigator>
   )
 }
