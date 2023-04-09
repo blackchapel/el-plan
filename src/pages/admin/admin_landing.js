@@ -175,17 +175,18 @@ export default function GridListWith() {
           <Flex flexWrap="wrap" gridGap={6} justify="center">
             <Card
               heading={"Scratch and Win"}
-              icon={<Icon as={FaGift} w={10} h={10} />}
+              icon={<Icon as={FaGift} w={10} h={10} color={"#563300"} />}
               description={
                 "Create a scratch and win coupon which will be dispatched "
               }
               func={scratchWinHandler}
+              
             />
 
           
             <Card
               heading={"Create Combos"}
-              icon={<Icon as={FaCoffee} w={10} h={10} />}
+              icon={<Icon as={FaCoffee} w={10} h={10} color={"#563300"} />}
               description={
                 "Create combos for users that increase sales and customize products based on sales"
               }
@@ -275,7 +276,7 @@ export default function GridListWith() {
             </Modal>
             <Card
               heading={"Manage Sales"}
-              icon={<Icon as={FaSalesforce} w={10} h={10} />}
+              icon={<Icon as={FaSalesforce} w={10} h={10} color={"#563300"} />}
               description={
                 "Detailed statistics about current sales used for analysis and planning strategy"
               }
@@ -283,7 +284,7 @@ export default function GridListWith() {
             />
             <Card
               heading={"Loyalty program"}
-              icon={<Icon as={FaTrophy}   w={10} h={10} />}
+              icon={<Icon as={FaTrophy}   w={10} h={10} color={"#563300"} />}
               description={
                 "Program that awards points and maintains a leaderboard of customers"
               }
@@ -291,7 +292,7 @@ export default function GridListWith() {
             />
             <Card
               heading={"Manage Products"}
-              icon={<Icon as={FaBoxOpen} w={10} h={10} />}
+              icon={<Icon as={FaBoxOpen} w={10} h={10} color={"#563300"} />}
               description={
                 "List of all products along with inventory management like adding new products, deleting existing products."
               }
@@ -299,7 +300,7 @@ export default function GridListWith() {
             />
             <Card
               heading={"Create events"}
-              icon={<Icon as={FaWineGlass} w={10} h={10} />}
+              icon={<Icon as={FaWineGlass} w={10} h={10} color={"#563300"} />}
               description={
                 "Can create new events based on the needs and/or festivals in the near future."
               }

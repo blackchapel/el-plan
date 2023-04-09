@@ -113,6 +113,7 @@ const ViewSales = () => {
           <Thead>
             <Th>Pos.</Th>
             <Th>Customer name</Th>
+            <Th>Insta ID</Th>
             <Th >Points</Th>
             <Th>Action</Th>
             <Th>Incentive</Th>
@@ -159,6 +160,7 @@ const ViewSales = () => {
                   </Modal>
                   <Td>{idx + 1}</Td>
                   <Td>{customer.name}</Td>
+                  {customer.instaId ? <Td>{customer.instaId}</Td> : <Td> - </Td>} 
                   <Td>{customer.points}</Td>
                   <Td>
                     <Button

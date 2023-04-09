@@ -4,7 +4,7 @@ import AdminNavbar from "../../components/admin/admin_navbar/adminNavbar"
 
 const Loyalty = () => {
   const LineData = [
-    ["x", "line"],
+    ["x", "Popularity line"],
     [1, 5.8],
     [2, 6.9],
     [3, 4.2],
@@ -26,10 +26,10 @@ const Loyalty = () => {
   return (
     <>
     <AdminNavbar />
-      <div>
+      <div className="chart row h-100">
         {/* <Linechart chartdata={chartdata} /> */}
-        <div className="container mt-5">
-          <h2>Popularity of products</h2>
+        <div className="container mt-5 my-auto col-sm-12">
+          <h2 className="chart-heading">Popularity of products</h2>
           <Chart
             width={"700px"}
             height={"410px"}
