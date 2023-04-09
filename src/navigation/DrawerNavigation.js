@@ -6,6 +6,7 @@ import BottomNavigation from './BottomNavigation';
 import DrawerComponent from '../components/DrawerComponent';
 import HomeScreen from '../screens/HomeScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
+import SpinWheel from '../screens/SpinWheel';
 
 const Drawer = createDrawerNavigator();
 
@@ -32,6 +33,15 @@ const DrawerNavigation = () => {
         <Drawer.Screen
           component={LeaderboardScreen}
           name="Leaderboard"
+          options={{
+            drawerIcon: ({ color }) => {
+              <MaterialIcons name="list" size={22} color={color} />;
+            }
+          }}
+        />
+        <Drawer.Screen
+          component={SpinWheel}
+          name="Spin the Wheeeeel"
           options={{
             drawerIcon: ({ color }) => {
               <MaterialIcons name="list" size={22} color={color} />;
