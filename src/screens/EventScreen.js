@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { Image, StyleSheet, Text,View } from "react-native";
+import { Image, StyleSheet, Text,TouchableOpacity,View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import img from '../../assets/brand-logo.png'
@@ -29,23 +29,34 @@ const EventScreen = () => {
     });
     
     return (
-        events.map((item, index) => (
-            <View key={index} style={styles.container} >
-                <View style={styles.card}>
-                    <Image
-                        src={item.thumbnail}
-                        style={styles.image}
-                        />
+        <View style={{flex:1, justifyContent:"flex-start",alignItems:"center", backgroundColor: "#FEEDDC"}}>
+            <Text style={{fontWeight: 'bold', marginTop: 50, fontSize: 20}} >Platinum Exclusive</Text>
 
-                    <View style={styles.details}>
-                        <Text style={styles.customerName}>{item.name}</Text>
+            {events.map((item, index) => {
+                return(
+                
+                <View key={index} style={styles.container} > 
+                    <View style={styles.card}>
+                        <TouchableOpacity>
+                            <Image
+                                src={item.thumbnail}
+                                style={styles.image}
+                            />
+                        </TouchableOpacity>
 
-                        <Text style={styles.loyaltyPoints}>{item.description}</Text>
+                        <View style={styles.details}>
+                            <Text style={styles.customerName}>{item.name}</Text>
+
+                            <Text style={styles.loyaltyPoints}>{item.description}</Text>
+                        </View>
                     </View>
+                    
                 </View>
-            </View>
-        ))
+            )})}
+        </View>
+        
     )
+    
 }
 
 const styles = StyleSheet.create({
@@ -54,7 +65,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: "flex-start",
         justifyContent: "flex-start",
-        padding: 16,
+        paddingHorizontal: 16,
         backgroundColor: "#FEEDDC",
         borderRadius: 8,
         shadowColor: "#000",
@@ -71,7 +82,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         padding: 16,
-        marginTop: 30,
+        marginVertical: 15,
         backgroundColor: "#563300",
         borderRadius: 8,
         shadowColor: "#000",

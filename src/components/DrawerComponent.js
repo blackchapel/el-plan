@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Share, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import {
   DrawerContentScrollView,
@@ -66,6 +66,10 @@ const DrawerComponent = (props) => {
       }
   }
 
+  const onShare = async () => {
+    const result = await Share.share({message: 'Hey there! do checkout Ettarra Coffee House. I just scored 10 coffees this week.'});
+  }
+
   const activateWallet = async () => {
     try {
       user.isWalletActivated = true;
@@ -82,6 +86,15 @@ const DrawerComponent = (props) => {
       </DrawerContentScrollView>
 
       <View style={styles.bottomView} onPress={login}>
+        <TouchableOpacity onPress={onShare} style={styles.bottomButton}>
+          <MaterialIcons
+            name="share"
+            size={22}
+            color={'#DCB9A3'}
+          />
+          <Text style={styles.bottomText}>Share Latest Achievement</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.bottomButton} onPress={activateWallet}>
           <MaterialIcons
             name="account-balance-wallet"

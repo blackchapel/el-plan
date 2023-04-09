@@ -15,7 +15,7 @@ import Carousel from "react-native-snap-carousel";
 import { Feather } from "@expo/vector-icons";
 import RecommendCardComponent from "../components/RecommendCardComponent";
 import BannerComponent from "../components/BannerComponent";
-import avatar from "./../../assets/avatar.jpg";
+import avatar from "./../../assets/anna.png";
 import { sliderData } from "../utils/data";
 import { windowWidth } from "../utils/dimensions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
