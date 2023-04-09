@@ -4,7 +4,8 @@ const {
     createCoupon,
     viewCoupons,
     viewCouponById,
-    deleteCoupon
+    deleteCoupon,
+    spinTheWheel
 } = require('./../controllers/coupon.controller');
 
 const router = express.Router();
@@ -16,5 +17,7 @@ router.get('/', [auth.verifyJwt], viewCoupons);
 router.get('/:id', [auth.verifyJwt], viewCouponById);
 
 router.delete('/:id', [auth.verifyJwt], deleteCoupon);
+
+router.get('/noob/spin-the-wheel', [auth.verifyJwt], spinTheWheel);
 
 module.exports = router;

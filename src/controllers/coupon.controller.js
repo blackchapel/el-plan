@@ -75,9 +75,35 @@ const deleteCoupon = async (req, res) => {
     }
 };
 
+const spinTheWheel = async (req, res) => {
+    try {
+        const coupons = await Coupon.find({});
+
+        let selectedCoupon =
+            coupons[Math.floor(Math.random() * coupons.length)];
+
+        if (!selectedCoupon) {
+            selectedCoupon = { name: 'Better Luck Next Time' };
+        }
+
+        res.status(201).json({
+            message: 'Coupon selected!',
+            data: {
+                selectedCoupon
+            }
+        });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
+
 module.exports = {
     createCoupon,
     viewCoupons,
     viewCouponById,
-    deleteCoupon
+    deleteCoupon,
+    spinTheWheel
 };
