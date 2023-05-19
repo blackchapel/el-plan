@@ -9,12 +9,16 @@ import ViewSales from "./pages/admin/view_sales";
 import CouponManager from "./pages/admin/coupon_manager";
 import CreateEvents from "./pages/admin/create_events";
 import Loyalty from "./pages/admin/loyalty";
+import PrivacyPolicy from "./privacyPolicy";
+import TermsOfService from "./termsOfService";
 
 function App() {
   return (
     
       <Routes>
         <Route element={<Landing />} path="/home" />
+        <Route element={<PrivacyPolicy />} path="/privacy-policy" />
+        <Route element={<TermsOfService />} path="/terms-of-service" />
         <Route element={<Login />} path="login" />
         <Route element={<SignUp />} path="signup" />
         <Route element={<AdminLanding />} path="admin" />
